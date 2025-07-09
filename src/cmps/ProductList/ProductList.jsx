@@ -136,7 +136,7 @@ let newItems = []
 
 const ProductList = () => {
   const [addeedItems, setAddedItems] = useState([])
-  // const [button, setButton] = useState('Хуйня работает???')
+  const [button, setButton] = useState('Хуйня работает???')
   const { tg, queryId} = useTelegram()
   
   // console.log(addeedItems, 'addeedItems 1')
@@ -163,7 +163,8 @@ const ProductList = () => {
   }, [])
 
   useEffect(() => {
-    tg.onEvent('mainButtonClicked', onSendData)
+    tg.onEvent('mainButtonClicked', setButton(queryId))
+    // tg.onEvent('mainButtonClicked', onSendData)
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
     }
