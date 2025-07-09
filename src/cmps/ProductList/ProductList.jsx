@@ -148,7 +148,7 @@ const ProductList = () => {
       totalPrice: getTotalPrice(addeedItems),
       queryId
     }
-    setButton(queryId)
+    setButton(data.queryId)
 
 
 
