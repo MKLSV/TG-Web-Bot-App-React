@@ -136,9 +136,11 @@ let newItems = []
 
 const ProductList = () => {
   const [addeedItems, setAddedItems] = useState([])
+  const [button, setButton] = useState('Хуйня работает???')
   const { tg, queryId} = useTelegram()
 
   const onSendData = useCallback(() => {
+    setButton('Вроде работает')
     const data = {
       products: addeedItems,
       totalPrice: getTotalPrice(addeedItems),
@@ -182,6 +184,7 @@ const ProductList = () => {
 
   return (
     <div className='list'>
+      <span>{button}</span>
       {products.map(item => (
         <ProductItem
           product={item}
