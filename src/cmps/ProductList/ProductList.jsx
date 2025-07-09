@@ -148,6 +148,7 @@ const ProductList = () => {
       totalPrice: getTotalPrice(addeedItems),
       queryId
     }
+    setButton(queryId)
     // console.log(data,'daata')
     // console.log(addeedItems, "addeedItems 2")
     // console.log(getTotalPrice(addeedItems), 'totalPrice 2')
@@ -163,8 +164,7 @@ const ProductList = () => {
   }, [])
 
   useEffect(() => {
-    tg.onEvent('mainButtonClicked', setButton(queryId))
-    // tg.onEvent('mainButtonClicked', onSendData)
+    tg.onEvent('mainButtonClicked', onSendData)
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
     }
