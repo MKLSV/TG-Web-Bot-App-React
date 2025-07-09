@@ -197,10 +197,12 @@ const ProductList = () => {
 
   return (
     <div className='list'>
-      <span>{button}</span>
-      <span>{button1}</span>
-      <span>{button2}</span>
-      <span>{button3}</span>
+      <h3>query = {button} </h3>
+      <h3>products = {button1}</h3>
+      <h3>totalPrice = {button2}</h3>
+      <h3>data.queryId = {button3}</h3>
+      <h3>addeedItems = {addeedItems} </h3>
+      <h3>totalPrice = {getTotalPrice(addeedItems)}</h3>
       {/* <button onClick={onSendData}>KHOnKA</button> */}
       {products.map(item => (
         <ProductItem
