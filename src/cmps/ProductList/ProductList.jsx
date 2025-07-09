@@ -137,9 +137,6 @@ let newItems = []
 const ProductList = () => {
   const [addeedItems, setAddedItems] = useState([])
   const [button, setButton] = useState('Хуйня работает???')
-  const [button1, setButton1] = useState('1')
-  const [button2, setButton2] = useState('2')
-  const [button3, setButton3] = useState('3')
   const { tg, queryId} = useTelegram()
   
   // console.log(addeedItems, 'addeedItems 1')
@@ -152,13 +149,8 @@ const ProductList = () => {
       queryId
     }
     setButton(queryId)
-    setButton1(data?.products)
-    setButton2(data?.totalPrice)
-    setButton3(data?.queryId)
-    // console.log(data,'daata')
-    // console.log(addeedItems, "addeedItems 2")
-    // console.log(getTotalPrice(addeedItems), 'totalPrice 2')
-    // console.log(queryId, 'queryId 2')
+
+
 
     fetch('http://192.168.0.91:8000/web-data', {
       method: 'POST',
@@ -197,12 +189,8 @@ const ProductList = () => {
 
   return (
     <div className='list'>
-      <h3>query = {button} </h3>
-      <h3>products = {button1}</h3>
-      <h3>totalPrice = {button2}</h3>
-      <h3>data.queryId = {button3}</h3>
-      <h3>addeedItems = {addeedItems} </h3>
-      <h3>totalPrice = {getTotalPrice(addeedItems)}</h3>
+      <h3>{button} </h3>
+  
       {/* <button onClick={onSendData}>KHOnKA</button> */}
       {products.map(item => (
         <ProductItem
