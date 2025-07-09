@@ -136,21 +136,15 @@ let newItems = []
 
 const ProductList = () => {
   const [addeedItems, setAddedItems] = useState([])
-  const [button, setButton] = useState('Хуйня работает???')
   const { tg, queryId} = useTelegram()
   
-  // console.log(addeedItems, 'addeedItems 1')
-  // console.log(useTelegram(queryId), 'queryId 1')
-  // console.log(getTotalPrice(addeedItems), 'totalPrice 1')
+
   const onSendData = useCallback(() => {
     const data = {
       products: addeedItems,
       totalPrice: getTotalPrice(addeedItems),
       queryId
     }
-    setButton(data.queryId)
-
-
 
     fetch('http://192.168.0.91:8000/web-data', {
       method: 'POST',
@@ -159,14 +153,14 @@ const ProductList = () => {
       },
       body: JSON.stringify(data)
     })
-  }, [])
+  }, [queryId])
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData)
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
     }
-  }, [])
+  }, [onSendData])
 
   const onAdd = (product) => {
     const alreadyAdded = addeedItems.find(item => item.id === product.id)
@@ -189,9 +183,6 @@ const ProductList = () => {
 
   return (
     <div className='list'>
-      <h3>{button} </h3>
-  
-      {/* <button onClick={onSendData}>KHOnKA</button> */}
       {products.map(item => (
         <ProductItem
           product={item}
