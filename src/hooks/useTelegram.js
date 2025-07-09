@@ -3,6 +3,9 @@ export function useTelegram() {
     
     const tg = window.Telegram.WebApp
     
+    console.log(tg.initDataUnsafe, 'ВОТ ОНО ВООООт')
+    console.log(tg.initDataUnsafe.user, 'USER')
+    console.log(tg.initDataUnsafe.query_id, 'query_id')
     const onClose = () => {
         tg.close()
     }

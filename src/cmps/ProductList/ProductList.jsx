@@ -136,17 +136,23 @@ let newItems = []
 
 const ProductList = () => {
   const [addeedItems, setAddedItems] = useState([])
-  const [button, setButton] = useState('Хуйня работает???')
+  // const [button, setButton] = useState('Хуйня работает???')
   const { tg, queryId} = useTelegram()
-
+  
+  // console.log(addeedItems, 'addeedItems 1')
+  // console.log(useTelegram(queryId), 'queryId 1')
+  // console.log(getTotalPrice(addeedItems), 'totalPrice 1')
   const onSendData = useCallback(() => {
     const data = {
       products: addeedItems,
       totalPrice: getTotalPrice(addeedItems),
       queryId
     }
-    setButton(data.products)
-    console.log(data)
+    // console.log(data,'daata')
+    // console.log(addeedItems, "addeedItems 2")
+    // console.log(getTotalPrice(addeedItems), 'totalPrice 2')
+    // console.log(queryId, 'queryId 2')
+
     fetch('http://192.168.0.91:8000/web-data', {
       method: 'POST',
       headers: {
@@ -154,7 +160,7 @@ const ProductList = () => {
       },
       body: JSON.stringify(data)
     })
-  }, [queryId])
+  }, [])
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData)
@@ -184,7 +190,8 @@ const ProductList = () => {
 
   return (
     <div className='list'>
-      <span>{button}</span>
+      {/* <span>{button}</span>
+      <button onClick={onSendData}>KHOnKA</button> */}
       {products.map(item => (
         <ProductItem
           product={item}
