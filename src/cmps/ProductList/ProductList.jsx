@@ -191,8 +191,8 @@ const ProductList = () => {
 
   return (
     <div className='list'>
-      {/* <span>{button}</span>
-      <button onClick={onSendData}>KHOnKA</button> */}
+      <span>{button}</span>
+      {/* <button onClick={onSendData}>KHOnKA</button> */}
       {products.map(item => (
         <ProductItem
           product={item}
