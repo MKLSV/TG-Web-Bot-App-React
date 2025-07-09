@@ -152,9 +152,9 @@ const ProductList = () => {
       queryId
     }
     setButton(queryId)
-    setButton1(data.products)
-    setButton2(data.totalPrice)
-    setButton3(data.queryId)
+    setButton1(data?.products)
+    setButton2(data?.totalPrice)
+    setButton3(data?.queryId)
     // console.log(data,'daata')
     // console.log(addeedItems, "addeedItems 2")
     // console.log(getTotalPrice(addeedItems), 'totalPrice 2')
