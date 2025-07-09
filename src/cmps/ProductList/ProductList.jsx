@@ -145,7 +145,7 @@ const ProductList = () => {
       totalPrice: getTotalPrice(addeedItems),
       queryId
     }
-    setButton(data)
+    setButton(data.products)
     console.log(data)
     fetch('http://192.168.0.91:8000/web-data', {
       method: 'POST',
