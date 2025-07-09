@@ -137,6 +137,9 @@ let newItems = []
 const ProductList = () => {
   const [addeedItems, setAddedItems] = useState([])
   const [button, setButton] = useState('Хуйня работает???')
+  const [button1, setButton1] = useState('1')
+  const [button2, setButton2] = useState('2')
+  const [button3, setButton3] = useState('3')
   const { tg, queryId} = useTelegram()
   
   // console.log(addeedItems, 'addeedItems 1')
@@ -149,6 +152,9 @@ const ProductList = () => {
       queryId
     }
     setButton(queryId)
+    setButton1(data.products)
+    setButton2(data.totalPrice)
+    setButton3(data.queryId)
     // console.log(data,'daata')
     // console.log(addeedItems, "addeedItems 2")
     // console.log(getTotalPrice(addeedItems), 'totalPrice 2')
@@ -192,6 +198,9 @@ const ProductList = () => {
   return (
     <div className='list'>
       <span>{button}</span>
+      <span>{button1}</span>
+      <span>{button2}</span>
+      <span>{button3}</span>
       {/* <button onClick={onSendData}>KHOnKA</button> */}
       {products.map(item => (
         <ProductItem
