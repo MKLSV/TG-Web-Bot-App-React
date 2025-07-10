@@ -135,14 +135,14 @@ let newItems = []
 
 
 const ProductList = () => {
-  const [addeedItems, setAddedItems] = useState([])
+  const [addedItems, setAddedItems] = useState([])
   const { tg, queryId} = useTelegram()
   
 
   const onSendData = useCallback(() => {
     const data = {
-      products: addeedItems,
-      totalPrice: getTotalPrice(addeedItems),
+      products: addedItems,
+      totalPrice: getTotalPrice(addedItems),
       queryId
     }
 
@@ -153,7 +153,7 @@ const ProductList = () => {
       },
       body: JSON.stringify(data)
     })
-  }, [queryId])
+  }, [addedItems])
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData)
@@ -163,11 +163,11 @@ const ProductList = () => {
   }, [onSendData])
 
   const onAdd = (product) => {
-    const alreadyAdded = addeedItems.find(item => item.id === product.id)
+    const alreadyAdded = addedItems.find(item => item.id === product.id)
     if (alreadyAdded) {
-      newItems = addeedItems.filter(item => item.id !== product.id)
+      newItems = addedItems.filter(item => item.id !== product.id)
     } else {
-      newItems = [...addeedItems, product]
+      newItems = [...addedItems, product]
     }
 
     setAddedItems(newItems)
