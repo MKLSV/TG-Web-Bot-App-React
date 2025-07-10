@@ -31,7 +31,7 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-        fetch('https://tg-web-bot-app-back.onrender.com:10000/web-data', {
+        fetch('https://tg-web-bot-app-back.onrender.com/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
