@@ -136,20 +136,19 @@ let newItems = []
 
 const ProductList = () => {
   const [addedItems, setAddedItems] = useState([])
-  const { tg, queryId} = useTelegram()
-  
+  const { tg, queryId } = useTelegram()
+
 
   const onSendData = useCallback(() => {
     const data = {
       products: addedItems,
       totalPrice: getTotalPrice(addedItems),
-      queryId
+      queryId,
     }
-
     fetch('http://192.168.0.91:8000/web-data', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data)
     })
@@ -162,24 +161,29 @@ const ProductList = () => {
     }
   }, [onSendData])
 
+
   const onAdd = (product) => {
-    const alreadyAdded = addedItems.find(item => item.id === product.id)
+    const alreadyAdded = addedItems.find(item => item.id === product.id);
+    let newItems = [];
+
     if (alreadyAdded) {
-      newItems = addedItems.filter(item => item.id !== product.id)
+      newItems = addedItems.filter(item => item.id !== product.id);
     } else {
-      newItems = [...addedItems, product]
+      newItems = [...addedItems, product];
     }
 
     setAddedItems(newItems)
+
     if (newItems.length === 0) {
-      tg.MainButton.hide()
+      tg.MainButton.hide();
     } else {
-      tg.MainButton.show()
+      tg.MainButton.show();
       tg.MainButton.setParams({
         text: `Купить ${getTotalPrice(newItems)}`
       })
     }
   }
+
 
   return (
     <div className='list'>
